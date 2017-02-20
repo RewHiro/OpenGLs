@@ -10,8 +10,13 @@ namespace utility
 class Noncopyable
 {
 public:
-	Noncopyable(Noncopyable&) = delete;
-	Noncopyable operator= (Noncopyable&) = delete;
+
+	Noncopyable() = default;
+
+	Noncopyable(const Noncopyable&) = delete;
+	Noncopyable operator= (const Noncopyable&) = delete;
 };
 
 }
+
+namespace util = utility;

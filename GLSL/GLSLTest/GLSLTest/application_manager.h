@@ -19,7 +19,7 @@ public:
 		glfwTerminate();
 	}
 
-	void Run()
+	auto Run()
 	{
 		while (!glfwWindowShouldClose(window_))
 		{

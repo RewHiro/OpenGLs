@@ -1,5 +1,6 @@
 #include "stdafx.h"
 
+
 int main()
 {
 	ApplicationManager application_manager;

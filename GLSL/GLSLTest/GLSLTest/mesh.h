@@ -1,7 +1,5 @@
 #pragma once
 
-class FBXReader;
-
 struct Mesh
 {
 public:

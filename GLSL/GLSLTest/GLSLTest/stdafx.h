@@ -1,5 +1,7 @@
 #pragma once
 
+#include "defines.hpp"
+
 #include <vector>
 
 #include <gl/glew.h>
@@ -18,6 +20,6 @@
 #include "singleton.h"
 #include "fbx_reader.h"
 
-
+#include "renderer.h"
 
 #include "application_manager.h"

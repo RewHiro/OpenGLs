@@ -3,6 +3,7 @@
 #include "defines.hpp"
 
 #include <vector>
+#include <memory>
 
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
@@ -20,6 +21,8 @@
 #include "singleton.h"
 #include "fbx_reader.h"
 
-#include "renderer.h"
+#include "node.h"
+
+#include "mesh_renderer.h"
 
 #include "application_manager.h"

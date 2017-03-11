@@ -9,9 +9,9 @@ struct Node
 public:
 
 	//Material
-	const char* name_;
-	Eigen::Matrix4f matrix_;
-	std::vector<Mesh>meshes_;
-	WeakNode parent_;
-	std::vector<SharedNode>children_;
+	const char* name = "";
+	Eigen::Matrix4f matrix = Eigen::Matrix4f::Identity();
+	std::vector<Mesh>meshes = std::vector<Mesh>();
+	WeakNode parent;
+	std::vector<SharedNode>children = std::vector<SharedNode>();
 };

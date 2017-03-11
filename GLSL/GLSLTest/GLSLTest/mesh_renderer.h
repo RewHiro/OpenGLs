@@ -42,7 +42,7 @@ public:
 				auto* const vertex_indices = fbx_mesh->GetPolygonVertices();
 				for (auto i = 0; i < VERTEX_COUNT; ++i)
 				{
-					auto fbx_vector = fbx_mesh->GetControlPointAt(vertex_indices[i]);
+					auto& fbx_vector = fbx_mesh->GetControlPointAt(vertex_indices[i]);
 					auto vector = Eigen::Vector4f(fbx_vector[0], fbx_vector[1], fbx_vector[2], fbx_vector[3]);
 					mesh.vertices_.emplace_back(vector);
 					mesh.indices_.emplace_back(vertex_indices[i]);
@@ -66,19 +66,19 @@ public:
 
 					glGenBuffers(3, buffers);
 
-					auto vertices = mesh.vertices_;
+					auto& vertices = mesh.vertices_;
 					glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
 					glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Eigen::Vector4f), vertices.data(), GL_STATIC_DRAW);
 					glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Eigen::Vector4f), 0);
 					glEnableVertexAttribArray(0);
 
-					auto normals = mesh.normals_;
+					auto& normals = mesh.normals_;
 					glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
 					glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(Eigen::Vector4f), vertices.data(), GL_STATIC_DRAW);
 					glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Eigen::Vector4f), 0);
 					glEnableVertexAttribArray(0);
 
-					auto indices = mesh.indices_;
+					auto& indices = mesh.indices_;
 					glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
 					glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(uint), indices.data(), GL_STATIC_DRAW);
 
@@ -101,7 +101,16 @@ public:
 
 	void update()
 	{
+		auto& meshes = node_->meshes_;
 
+		for (auto& mesh : meshes)
+		{
+			glBindVertexArray(mesh.vao_);
+
+			glDrawElements(GL_TRIANGLES, mesh.polygon_count_, GL_UNSIGNED_INT, 0);
+
+			glBindVertexArray(0);
+		}
 	}
 
 private:

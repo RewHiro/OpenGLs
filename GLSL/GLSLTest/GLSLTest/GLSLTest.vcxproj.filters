@@ -50,9 +50,6 @@
     <ClInclude Include="defines.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="renderer.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="node.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>

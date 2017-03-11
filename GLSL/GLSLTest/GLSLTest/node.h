@@ -1,5 +1,8 @@
 #pragma once
 
+struct Node;
+using SharedNode = std::shared_ptr<Node>;
+
 struct Node
 {
 public:
@@ -7,5 +10,6 @@ public:
 	//Material
 	Eigen::Matrix4f matrix_;
 	std::vector<Mesh>meshes_;
-	std::vector<std::shared_ptr<Node>>children_;
+	SharedNode parent_;
+	std::vector<SharedNode>children_;
 };

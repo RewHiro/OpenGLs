@@ -28,6 +28,8 @@ public:
 				}
 			}
 
+			node->name_ = fbx_node->GetName();
+
 			for (auto i = 0; i < ATTR_COUNT; ++i)
 			{
 				auto* const attr = fbx_node->GetNodeAttributeByIndex(i);
